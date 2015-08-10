@@ -23,76 +23,31 @@ $(function(){ // on dom ready
 	$('#cy').cytoscape({
 		  container: document.getElementById('cy'),
 		  
-		  elements: [
-			{
-				group: 'nodes',
+		  elements: {
+			nodes: [
+				{ data: { id: 'foo' }},
 				
-				data: {
-					id: 'n1',
-					parent: 'nparent'
-				},
+				{ data: { id: 'bar' }},
 				
-				scratch: {
-					foo: 'bar'
-				},
-				
-				position: {
-					x:100,
-					y:100
-				},
-				
-				selected: false,
-				
-				selectable: true,
-				
-				locked: false,
-				
-				grabbable: true,
-				
-				classes: 'foo bar',
-				
-				style: { 'background-color': 'red' }
-			},
-			
-			{
-				group: 'nodes',
-				data: { id: 'n2' },
-				renderedPosition: { x: 200, y: 200 }
-			},
-			
-			{
-				group: 'nodes',
-				data: { id: 'n3', parent: 'nparent' },
-				position: { x: 123, y: 234 }
-			},
-			
-			{
-				group: 'nodes',
-				data: { id: 'nparent', position: { x:200, y:100}}
-			},
-			
-			{
-				group: 'edges',
-				data: {
-					id: 'e1',
-					source: 'n1',
-					target: 'n2'
+				{
+					data: { weight: 100 },
+					group: 'nodes',
+					position: {
+						x: 100,
+						y: 100
+					},
+					classes: 'className1 className2',
+					selected: true,
+					selectable: true,
+					locaked: true,
+					grabbable: true
 				}
-			}
-		  ],
-		  
-		  layout: {
-			name: 'preset'
-		  },
-		  
-		  style: [
-			{
-				selector: 'node',
-				style: {
-					'content': 'data(id)'
-				}
-			}
-		  ]
+			],
+			
+			edges: [
+				{ data: { id: 'baz', source: 'foo', target: 'bar' }}
+			]
+		  }
 		});
 }); // on dom ready
 </script>
