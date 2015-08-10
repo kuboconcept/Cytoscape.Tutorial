@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	body { 
+	  font: 14px helvetica neue, helvetica, arial, sans-serif;
+	}
+
+	#cy {
+	  height: 100%;
+	  width: 100%;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	}
+</style>
+<meta charset="utf-8">
+<title>Visual style</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" ></script>
+<script src="js/cytoscape/cytoscape.min.js" /></script>
+<script type="text/javascript">
+$(function(){ // on dom ready
+	$('#cy').cytoscape({
+		  container: document.getElementById('cy'),
+		  
+		  elements: [
+			{
+				group: 'nodes',
+				
+				data: {
+					id: 'n1',
+					parent: 'nparent'
+				},
+				
+				scratch: {
+					foo: 'bar'
+				},
+				
+				position: {
+					x:100,
+					y:100
+				},
+				
+				selected: false,
+				
+				selectable: true,
+				
+				locked: false,
+				
+				grabbable: true,
+				
+				classes: 'foo bar',
+				
+				style: { 'background-color': 'red' }
+			},
+			
+			{
+				group: 'nodes',
+				data: { id: 'n2' },
+				renderedPosition: { x: 200, y: 200 }
+			},
+			
+			{
+				group: 'nodes',
+				data: { id: 'n3', parent: 'nparent' },
+				position: { x: 123, y: 234 }
+			},
+			
+			{
+				group: 'nodes',
+				data: { id: 'nparent', position: { x:200, y:100}}
+			},
+			
+			{
+				group: 'edges',
+				data: {
+					id: 'e1',
+					source: 'n1',
+					target: 'n2'
+				}
+			}
+		  ],
+		  
+		  layout: {
+			name: 'preset'
+		  },
+		  
+		  style: [
+			{
+				selector: 'node',
+				style: {
+					'content': 'data(id)'
+				}
+			}
+		  ]
+		});
+}); // on dom ready
+</script>
+</head>
+<body>
+<div id="cy">
+</div>
+<div style="font-family: Helvetica; font-style: normal; font-size: 16px; font-weight: normal; position: absolute; left: -9999px; top: -9999px; z-index: -1; visibility: hidden; pointer-events: none; padding: 0px; line-height: 1; white-space: normal;">George</div>
+</body>
+</html>
